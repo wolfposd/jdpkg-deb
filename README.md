@@ -41,5 +41,5 @@ information area.
 -Zcompress-type
  
 Specify which compression type to use when building a package.<br>
-Allowed values are gzip, xz (since dpkg 1.15.6), and none<br>
-(default is xz).
+Allowed values are gzip, ~~xz (since dpkg 1.15.6), and none<br>
+(default is xz).~~
