@@ -36,7 +36,7 @@ import org.apache.commons.compress.compressors.CompressorOutputStream;
 import org.apache.commons.compress.compressors.CompressorStreamFactory;
 import org.apache.commons.compress.utils.IOUtils;
 
-public class Dpkg {
+public class DpkgDeb {
 
     public static String BuildFile;
 

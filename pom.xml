@@ -22,7 +22,7 @@
 		          <archive>
 		            <manifest>
 		              <addClasspath>true</addClasspath>
-		              <mainClass>com.github.wolfposd.jdpkg.Dpkg</mainClass>
+		              <mainClass>com.github.wolfposd.jdpkg.deb.DpkgDeb</mainClass>
 		            </manifest>
 		          </archive>
 		        </configuration>
