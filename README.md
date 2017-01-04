@@ -34,12 +34,11 @@ subdirectory, which contains the control information files<br>
 such as the control file itself. This directory will not<br>
 appear in the binary package's filesystem archive, but instead<br>
 the files in it will be put in the binary package's control<br>
-information area.<br>
+information area.
+
+## OPTIONS
  
- ## OPTIONS
- 
- -Zcompress-type
- 
+-Zcompress-type
  
 Specify which compression type to use when building a package.<br>
 Allowed values are gzip, xz (since dpkg 1.15.6), and none<br>
