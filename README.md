@@ -2,6 +2,11 @@
 Basic Java Implementation of DPKG-DEB
 
 
+Has very limited functionality at the moment:
+
+java -jar jdpkg-deb.jar -Zgzip -b Foldername
+
+
 ## NAME
 jdpkg-deb - Debian package archive (.deb) manipulation tool
 
