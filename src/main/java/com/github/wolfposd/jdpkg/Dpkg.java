@@ -82,7 +82,7 @@ public class Dpkg {
         File debian_binary = new File("debian-binary");
 
         try {
-            addFilesFromFolderToZip(folder, dataTar, ArchiveStreamFactory.TAR);
+            addFilesFromFolderToTar(folder, dataTar, ArchiveStreamFactory.TAR);
 
             if (dataTar.exists()) {
                 compressArchive(dataTar, dataTarGz, compressionType);
@@ -96,7 +96,7 @@ public class Dpkg {
         }
 
         try {
-            addFilesFromFolderToZip(new File(folder, "DEBIAN/control"), controlTar, ArchiveStreamFactory.TAR);
+            addFilesFromFolderToTar(new File(folder, "DEBIAN/control"), controlTar, ArchiveStreamFactory.TAR);
 
             if (controlTar.exists()) {
                 compressArchive(controlTar, controlTarGz, compressionType);
@@ -142,7 +142,7 @@ public class Dpkg {
 
     }
 
-    private static void addFilesFromFolderToZip(final File source, final File destination, final String archiverName)
+    private static void addFilesFromFolderToTar(final File source, final File destination, final String archiverName)
             throws IOException, ArchiveException {
         OutputStream archiveStream = new FileOutputStream(destination);
         ArchiveOutputStream archive = new ArchiveStreamFactory().createArchiveOutputStream(archiverName, archiveStream);
@@ -153,25 +153,21 @@ public class Dpkg {
                 if (file.getName().equals("DEBIAN")) {
                     continue;
                 } else if (file.isDirectory()) {
-                    addFilesFromFolderToZip(file, destination, archiverName);
+                    addFilesFromFolderToTar(file, destination, archiverName);
                 } else {
-                    entryTodestination(file, archive, false);
+                    fileEntryToDestination(file, archive, false);
                 }
 
             }
         } else {
-            entryTodestination(source, archive, true);
+            fileEntryToDestination(source, archive, true);
         }
 
         archive.finish();
         archiveStream.close();
     }
 
-    public static void entryTodestination(File source, ArchiveOutputStream archive) throws IOException {
-        entryTodestination(source, archive, false);
-    }
-
-    public static void entryTodestination(File source, ArchiveOutputStream archive, boolean atRoot) throws IOException {
+    public static void fileEntryToDestination(File source, ArchiveOutputStream archive, boolean atRoot) throws IOException {
 
         TarArchiveEntry entry;
         if (atRoot) {
